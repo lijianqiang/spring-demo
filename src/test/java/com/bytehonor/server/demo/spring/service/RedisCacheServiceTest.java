@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.bytehonor.sdk.starter.redis.service.RedisCacheService;
+
 @SpringBootTest
 public class RedisCacheServiceTest {
 
@@ -19,9 +21,9 @@ public class RedisCacheServiceTest {
     public void test() {
         String key = "name";
         String value = "Elon Musk";
-        redisCacheService.set(key, value);
+        redisCacheService.kvSet(key, value);
 
-        String val = redisCacheService.get(key);
+        String val = redisCacheService.kvGet(key);
 
         LOG.info("val:{}", val);
 
