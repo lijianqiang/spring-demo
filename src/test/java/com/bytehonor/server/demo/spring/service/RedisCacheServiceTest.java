@@ -25,9 +25,23 @@ public class RedisCacheServiceTest {
 
         String val = redisCacheService.kvGet(key);
 
-        LOG.info("val:{}", val);
+        LOG.info("test val:{}", val);
 
         Assertions.assertTrue(value.equals(val), "test");
     }
 
+    @Test
+    public void testIncrement() {
+        String key = "testIncrement";
+        redisCacheService.delete(key);
+        int size = 10;
+        for (int i = 0; i < size; i++) {
+            redisCacheService.increment(key);
+        }
+        int val = redisCacheService.getCount(key);
+
+        LOG.info("testIncrement val:{}", val);
+        redisCacheService.delete(key);
+        Assertions.assertTrue(val == size, "test");
+    }
 }
