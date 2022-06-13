@@ -1,5 +1,7 @@
 package com.bytehonor.server.demo.spring.service;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -43,5 +45,22 @@ public class RedisCacheServiceTest {
         LOG.info("testIncrement val:{}", val);
         redisCacheService.delete(key);
         Assertions.assertTrue(val == size, "test");
+    }
+
+    @Test
+    public void testSet() {
+        String key = "testSet";
+        redisCacheService.delete(key);
+        int size = 10;
+        for (int i = 0; i < size; i++) {
+            redisCacheService.setLongAdd(key, 1L * i);
+        }
+        Set<Long> set = redisCacheService.setLongMemebers(key);
+        for (Long lo : set) {
+            LOG.info("long:{}", lo);
+        }
+
+        redisCacheService.delete(key);
+        Assertions.assertTrue(set.size() == size, "test");
     }
 }
