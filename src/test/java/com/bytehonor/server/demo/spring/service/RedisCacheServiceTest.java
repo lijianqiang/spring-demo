@@ -49,8 +49,8 @@ public class RedisCacheServiceTest {
     }
 
     @Test
-    public void testSet() {
-        String key = "testSet";
+    public void testLongSet() {
+        String key = "testLongSet";
         redisCacheService.delete(key);
         int size = 10;
         for (int i = 0; i < size; i++) {
@@ -58,16 +58,16 @@ public class RedisCacheServiceTest {
         }
         Set<Long> set = redisCacheService.setLongMemebers(key);
         for (Long lo : set) {
-            LOG.info("testSet long:{}", lo);
+            LOG.info("testLongSet long:{}", lo);
         }
 
         redisCacheService.delete(key);
-        Assertions.assertTrue(set.size() == size, "testSet");
+        Assertions.assertTrue(set.size() == size, "testLongSet");
     }
 
     @Test
-    public void testSet2() {
-        String key = "testSet2";
+    public void testLongSet2() {
+        String key = "testLongSet2";
         redisCacheService.delete(key);
         int size = 10;
         Set<Long> set1 = new HashSet<Long>();
@@ -77,12 +77,33 @@ public class RedisCacheServiceTest {
         redisCacheService.setLongAdds(key, set1);
 
         Set<Long> set2 = redisCacheService.setLongMemebers(key);
-        LOG.info("testSet2 set2:{}", set2.size());
+        LOG.info("testLongSet2 set2:{}", set2.size());
         for (Long lo : set2) {
-            LOG.info("testSet2 long:{}", lo);
+            LOG.info("testLongSet2 long:{}", lo);
         }
 
         redisCacheService.delete(key);
-        Assertions.assertTrue(set2.size() == size, "testSet2");
+        Assertions.assertTrue(set2.size() == size, "testLongSet2");
+    }
+    
+    @Test
+    public void testStringSet() {
+        String key = "testStringSet";
+        redisCacheService.delete(key);
+        int size = 10;
+        Set<String> set1 = new HashSet<String>();
+        for (int i = 0; i < size; i++) {
+            set1.add("string" + i);
+        }
+        redisCacheService.setAdds(key, set1);
+
+        Set<String> set2 = redisCacheService.setMemebers(key);
+        LOG.info("testStringSet set2:{}", set2.size());
+        for (String lo : set2) {
+            LOG.info("testStringSet long:{}", lo);
+        }
+
+        redisCacheService.delete(key);
+        Assertions.assertTrue(set2.size() == size, "testStringSet");
     }
 }
