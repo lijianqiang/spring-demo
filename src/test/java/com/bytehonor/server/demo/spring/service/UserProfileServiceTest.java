@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.bytehonor.sdk.lang.bytehonor.util.UuidUtils;
 import com.bytehonor.sdk.starter.jdbc.query.QueryCondition;
 import com.bytehonor.server.demo.spring.TestWrapper;
 import com.bytehonor.server.demo.spring.model.UserProfile;
@@ -34,12 +35,14 @@ public class UserProfileServiceTest {
 
     @Test
     public void testInsert() {
+        model.setUuid(UuidUtils.getSimple());
         UserProfile res = userProfileService.insert(model);
         TestWrapper.assertTrue("*testInsert*", res != null);
     }
 
     @Test
     public void testGet() {
+        model.setUuid(UuidUtils.getSimple());
         UserProfile res = userProfileService.insert(model);
         UserProfile resGet = userProfileService.get(res.getId());
         TestWrapper.assertTrue("*testGet*", resGet != null);
