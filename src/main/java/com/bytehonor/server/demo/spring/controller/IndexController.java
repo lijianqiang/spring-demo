@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bytehonor.sdk.beautify.lang.util.LocalDateTimeUtils;
 import com.bytehonor.sdk.define.bytehonor.result.StringResultVO;
-import com.bytehonor.sdk.lang.bytehonor.util.LocalDateTimeUtils;
 
 @RestController
 public class IndexController {
