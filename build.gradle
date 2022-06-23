@@ -24,9 +24,9 @@ ext {
 }
 
 dependencies {
-    implementation('com.bytehonor.sdk:spring-server-sdk:1.6.4')
-    implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.3.3')
-    implementation('com.bytehonor.sdk:redis-starter-sdk:0.2.3')
+    implementation('com.bytehonor.sdk:spring-server-sdk:1.6.5')
+    implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.3.4')
+    implementation('com.bytehonor.sdk:redis-starter-sdk:0.2.4')
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
 	runtimeOnly('mysql:mysql-connector-java')
