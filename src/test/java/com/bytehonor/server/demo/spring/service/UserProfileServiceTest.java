@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.bytehonor.sdk.beautify.lang.util.UuidUtils;
+import com.bytehonor.sdk.lang.spring.util.UuidUtils;
 import com.bytehonor.sdk.starter.jdbc.query.QueryCondition;
 import com.bytehonor.server.demo.spring.TestWrapper;
 import com.bytehonor.server.demo.spring.model.UserProfile;

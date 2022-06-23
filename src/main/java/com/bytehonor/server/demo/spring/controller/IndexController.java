@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bytehonor.sdk.beautify.lang.util.LocalDateTimeUtils;
-import com.bytehonor.sdk.define.bytehonor.result.StringResultVO;
+import com.bytehonor.sdk.define.spring.result.StringData;
+import com.bytehonor.sdk.lang.spring.util.LocalDateTimeUtils;
 
 @RestController
 public class IndexController {
@@ -23,18 +23,18 @@ public class IndexController {
     private Integer serverPort;
 
     @RequestMapping("/")
-    public StringResultVO actionIndex() {
+    public StringData actionIndex() {
         String server = new StringBuilder(applicationName).append(":").append(serverPort).toString();
         LOG.info("hello, {}", server);
-        return new StringResultVO("hello world");
+        return StringData.of("hello world");
     }
 
     @RequestMapping("/time")
-    public StringResultVO actionTime() {
+    public StringData actionTime() {
         LocalDateTime ldt = LocalDateTime.now();
         String format = LocalDateTimeUtils.format(ldt);
         LOG.info("time:{}, timestamp:{}", format, LocalDateTimeUtils.toTimestamp(ldt));
-        return new StringResultVO(format);
+        return StringData.of(format);
     }
 
 }
