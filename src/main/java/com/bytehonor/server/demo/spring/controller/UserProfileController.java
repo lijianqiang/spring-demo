@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bytehonor.sdk.define.spring.query.QueryCondition;
 import com.bytehonor.sdk.define.spring.result.DataListVO;
+import com.bytehonor.sdk.lang.spring.Sdk;
 import com.bytehonor.sdk.server.spring.getter.RequestGetter;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;
@@ -47,9 +48,7 @@ public class UserProfileController {
     public UserProfile getUserProfile(HttpServletRequest request, @PathVariable Long id) {
         LOG.info("getUserProfile id:{}", id);
         UserProfile model = userProfileService.get(id);
-        if (model == null) {
-            throw new RuntimeException("UserProfile不存在");
-        }
+        Sdk.require(model, id);
 
         return model;
     }
