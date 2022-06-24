@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.bytehonor.sdk.define.spring.query.QueryCondition;
 import com.bytehonor.sdk.starter.jdbc.dao.JdbcProxyDao;
 import com.bytehonor.sdk.starter.jdbc.model.ModelConvertMapper;
 import com.bytehonor.sdk.starter.jdbc.model.ModelGetterGroup;
-import com.bytehonor.sdk.starter.jdbc.query.QueryCondition;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 
 @Repository
@@ -83,7 +83,7 @@ public class UserProfileDao {
     }
 
     public int update(UserProfile model) {
-        return jdbcProxyDao.update(model, QueryCondition.id(model.getId()), convertMapper);
+        return jdbcProxyDao.updateById(model, model.getId(), convertMapper);
     }
 
     public int count(QueryCondition condition) {

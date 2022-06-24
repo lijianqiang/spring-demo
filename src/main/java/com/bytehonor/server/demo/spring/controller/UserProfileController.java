@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bytehonor.sdk.define.spring.query.QueryCondition;
 import com.bytehonor.sdk.define.spring.result.DataListVO;
-import com.bytehonor.sdk.starter.jdbc.query.QueryCondition;
+import com.bytehonor.sdk.server.spring.getter.RequestGetter;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;
-import com.bytehonor.server.demo.spring.util.RequestQueryUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -33,7 +33,7 @@ public class UserProfileController {
     @ResponseBody
     public DataListVO<UserProfile> listUserProfile(HttpServletRequest request) {
         LOG.info("listUserProfile");
-        QueryCondition condition = RequestQueryUtils.create(request);
+        QueryCondition condition = RequestGetter.create(request);
         List<UserProfile> list = userProfileService.list(condition);
         int total = userProfileService.count(condition);
         DataListVO<UserProfile> result = new DataListVO<UserProfile>();

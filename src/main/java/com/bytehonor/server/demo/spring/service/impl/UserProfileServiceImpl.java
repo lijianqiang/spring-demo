@@ -9,8 +9,8 @@ import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Service;
 
 import com.bytehonor.sdk.define.spring.constant.HttpConstants;
+import com.bytehonor.sdk.define.spring.query.QueryCondition;
 import com.bytehonor.sdk.lang.spring.util.UuidUtils;
-import com.bytehonor.sdk.starter.jdbc.query.QueryCondition;
 import com.bytehonor.server.demo.spring.dao.UserProfileDao;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;
@@ -54,7 +54,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     public UserProfile getByUuid(String uuid) {
         Objects.requireNonNull(uuid, "uuid");
 
-        QueryCondition condition = QueryCondition.create(0, 1).eq("uuid", uuid);
+        QueryCondition condition = QueryCondition.one().eq("uuid", uuid);
         List<UserProfile> result = list(condition);
         return DataAccessUtils.uniqueResult(result);
     }

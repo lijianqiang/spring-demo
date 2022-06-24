@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.bytehonor.sdk.define.spring.query.QueryCondition;
 import com.bytehonor.sdk.lang.spring.util.UuidUtils;
-import com.bytehonor.sdk.starter.jdbc.query.QueryCondition;
 import com.bytehonor.server.demo.spring.TestWrapper;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 
@@ -50,13 +50,13 @@ public class UserProfileServiceTest {
 
     @Test
     public void testCountByCondition() {
-        int res = userProfileService.count(QueryCondition.create());
+        int res = userProfileService.count(QueryCondition.and());
         TestWrapper.assertTrue("*testCountByCondition*", res > 0);
     }
 
     @Test
     public void testListByCondition() {
-        List<UserProfile> list = userProfileService.list(QueryCondition.create());
+        List<UserProfile> list = userProfileService.list(QueryCondition.and());
         TestWrapper.assertTrue("*testListByCondition*", list.size() > 0);
     }
 
