@@ -1,5 +1,5 @@
 #!/bin/sh
-APP_NAME=very-expensive-server
+APP_NAME=spring-demo-server
 APP_PORT=9090
 
 DEPLOY_DIR=/data/wwwroot/boot

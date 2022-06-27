@@ -1,5 +1,5 @@
 #!/bin/sh
-APP_NAME=very-expensive-server
+APP_NAME=spring-demo-server
 DEPLOY_DIR=/data/wwwroot/boot
 
 cd `dirname $0`
