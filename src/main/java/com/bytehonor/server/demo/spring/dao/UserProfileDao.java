@@ -4,8 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -18,8 +16,6 @@ import com.bytehonor.server.demo.spring.model.UserProfile;
 
 @Repository
 public class UserProfileDao {
-
-    private static final Logger LOG = LoggerFactory.getLogger(UserProfileDao.class);
 
     @Autowired
     private JdbcProxyDao jdbcProxyDao;
@@ -73,7 +69,6 @@ public class UserProfileDao {
 
     public UserProfile insert(UserProfile model) {
         long id = jdbcProxyDao.insert(model, convertMapper);
-        LOG.debug("insert id:{}", id);
         model.setId(id);
         return model;
     }
