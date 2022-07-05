@@ -1,27 +1,25 @@
 package com.bytehonor.server.demo.spring.scheduler.plan;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.bytehonor.sdk.lang.spring.thread.SafeRunner;
-import com.bytehonor.sdk.server.spring.scheduler.plan.TimeCronPlan;
-import com.bytehonor.sdk.server.spring.scheduler.time.TimeCron;
-import com.bytehonor.sdk.server.spring.scheduler.time.TimeCronBuilder;
+import com.bytehonor.sdk.server.spring.scheduler.plan.TimeGroupPlan;
+import com.bytehonor.sdk.server.spring.scheduler.time.TimeGroup;
+import com.bytehonor.sdk.server.spring.scheduler.time.TimeGroup.TimeGroupBuilder;
 import com.bytehonor.server.demo.spring.scheduler.task.PrintLogTask;
 
-public class PrintLogPlan extends TimeCronPlan {
+public class PrintLogPlan extends TimeGroupPlan {
 
-    private List<TimeCron> timeCrons;
+    private TimeGroup group;
 
     public PrintLogPlan() {
-        timeCrons = new ArrayList<TimeCron>();
-        timeCrons.addAll(TimeCronBuilder.make().build());
+        TimeGroupBuilder builder = TimeGroup.builder();
+        group = builder.every().build();
     }
 
     @Override
-    public List<TimeCron> crons() {
-        return timeCrons;
+    public TimeGroup group() {
+        return group;
     }
 
     @Override

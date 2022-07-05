@@ -1,6 +1,5 @@
 package com.bytehonor.server.demo.spring.scheduler;
 
-import com.bytehonor.sdk.server.spring.scheduler.SchedulerPlanFactory;
 import com.bytehonor.sdk.server.spring.scheduler.SchedulerPlanStarter;
 import com.bytehonor.server.demo.spring.scheduler.lock.RedisTaskLocker;
 import com.bytehonor.server.demo.spring.scheduler.plan.PrintLogPlan;
@@ -11,6 +10,6 @@ public class SchedulerStarter {
 
         SchedulerPlanStarter.start(1, new RedisTaskLocker());
 
-        SchedulerPlanFactory.put(new PrintLogPlan());
+        SchedulerPlanStarter.add(new PrintLogPlan());
     }
 }
