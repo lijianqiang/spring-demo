@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.bytehonor.sdk.lang.spring.thread.SafeRunner;
+import com.bytehonor.sdk.lang.spring.thread.SafeTask;
 
-public class PrintLogTask extends SafeRunner {
+public class PrintLogTask extends SafeTask {
 
     private static final Logger LOG = LoggerFactory.getLogger(PrintLogTask.class);
 

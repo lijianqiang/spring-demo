@@ -2,7 +2,7 @@ package com.bytehonor.server.demo.spring.scheduler.plan;
 
 import java.time.LocalDateTime;
 
-import com.bytehonor.sdk.lang.spring.thread.SafeRunner;
+import com.bytehonor.sdk.lang.spring.thread.SafeTask;
 import com.bytehonor.sdk.server.spring.scheduler.plan.TimeGroupPlan;
 import com.bytehonor.sdk.server.spring.scheduler.time.TimeGroup;
 import com.bytehonor.sdk.server.spring.scheduler.time.TimeGroup.TimeGroupBuilder;
@@ -23,7 +23,7 @@ public class PrintLogPlan extends TimeGroupPlan {
     }
 
     @Override
-    public SafeRunner create(LocalDateTime ldt) {
+    public SafeTask create(LocalDateTime ldt) {
         return new PrintLogTask(ldt);
     }
 
