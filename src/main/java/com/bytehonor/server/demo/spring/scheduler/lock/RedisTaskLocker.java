@@ -7,6 +7,8 @@ import com.bytehonor.sdk.starter.redis.service.RedisCacheService;
 
 public class RedisTaskLocker extends TaskLocker {
 
+    private static final long LOCK_MILLIS = TimeConstants.MINUTE * 2;
+
     private final RedisCacheService redisCacheService;
 
     public RedisTaskLocker() {
@@ -15,7 +17,7 @@ public class RedisTaskLocker extends TaskLocker {
 
     @Override
     public boolean lock(String key) {
-        return redisCacheService.lock(key, TimeConstants.MINUTE * 2);
+        return redisCacheService.lock(key, LOCK_MILLIS);
     }
 
 }
