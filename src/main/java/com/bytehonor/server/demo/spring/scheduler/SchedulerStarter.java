@@ -8,7 +8,7 @@ public class SchedulerStarter {
 
     public static void init() {
 
-        SpringScheduler.start(1, new RedisTaskLocker());
+        SpringScheduler.start(new RedisTaskLocker());
 
         SpringScheduler.add(new PrintLogPlan());
     }
