@@ -1,4 +1,4 @@
-package com.bytehonor.server.demo.spring.scheduler.handler;
+package com.bytehonor.server.demo.spring.scheduler.lock;
 
 import com.bytehonor.sdk.define.spring.constant.TimeConstants;
 import com.bytehonor.sdk.server.spring.SpringServer;
