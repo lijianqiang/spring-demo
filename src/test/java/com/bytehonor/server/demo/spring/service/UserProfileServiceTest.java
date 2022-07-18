@@ -60,4 +60,9 @@ public class UserProfileServiceTest {
         TestWrapper.assertTrue("*testListByCondition*", list.size() > 0);
     }
 
+    @Test
+    public void testDistinct() {
+        List<Integer> list = userProfileService.distinctAge(QueryCondition.and());
+        TestWrapper.assertTrue("*testDistinct*", list.size() > 0);
+    }
 }

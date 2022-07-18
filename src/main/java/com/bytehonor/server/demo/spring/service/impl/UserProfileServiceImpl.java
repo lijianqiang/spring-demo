@@ -19,12 +19,12 @@ import com.bytehonor.server.demo.spring.service.UserProfileService;
 public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
-    private UserProfileDao userWeiboProfileDao;
+    private UserProfileDao userProfileDao;
 
     @Override
     public boolean delete(Long id) {
         Objects.requireNonNull(id, "id");
-        return userWeiboProfileDao.delete(id);
+        return userProfileDao.delete(id);
     }
 
     @Override
@@ -41,13 +41,13 @@ public class UserProfileServiceImpl implements UserProfileService {
         if (model.getUuid() == null) {
             model.setUuid(UuidUtils.getSimple());
         }
-        return userWeiboProfileDao.insert(model);
+        return userProfileDao.insert(model);
     }
 
     @Override
     public UserProfile get(Long id) {
         Objects.requireNonNull(id, "id");
-        return userWeiboProfileDao.get(id);
+        return userProfileDao.get(id);
     }
 
     @Override
@@ -64,19 +64,19 @@ public class UserProfileServiceImpl implements UserProfileService {
         Objects.requireNonNull(model, "model");
         Objects.requireNonNull(model.getId(), "id");
 
-        return userWeiboProfileDao.update(model) > 0;
+        return userProfileDao.update(model) > 0;
     }
 
     @Override
     public int count(QueryCondition condition) {
         Objects.requireNonNull(condition, "condition");
-        return userWeiboProfileDao.count(condition);
+        return userProfileDao.count(condition);
     }
 
     @Override
     public List<UserProfile> list(QueryCondition condition) {
         Objects.requireNonNull(condition, "condition");
-        return userWeiboProfileDao.list(condition);
+        return userProfileDao.list(condition);
     }
 
     @Override
@@ -113,6 +113,11 @@ public class UserProfileServiceImpl implements UserProfileService {
         } else {
             insert(model);
         }
+    }
+
+    @Override
+    public List<Integer> distinctAge(QueryCondition condition) {
+        return userProfileDao.distinctAge(condition);
     }
 
 }

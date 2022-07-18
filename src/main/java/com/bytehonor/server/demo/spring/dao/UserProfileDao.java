@@ -89,4 +89,8 @@ public class UserProfileDao {
         return jdbcProxyDao.query(UserProfile.class, condition, rowMapper);
     }
 
+    public List<Integer> distinctAge(QueryCondition condition) {
+        return jdbcProxyDao.distinct(UserProfile.class, "age", condition, Integer.class);
+    }
+
 }

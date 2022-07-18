@@ -25,4 +25,6 @@ public interface UserProfileService {
 
     public void save(UserProfile model);
 
+    public List<Integer> distinctAge(QueryCondition condition);
+
 }
