@@ -12,6 +12,7 @@ import com.bytehonor.sdk.define.spring.query.QueryCondition;
 import com.bytehonor.sdk.starter.jdbc.dao.JdbcProxyDao;
 import com.bytehonor.sdk.starter.jdbc.model.ModelConvertMapper;
 import com.bytehonor.sdk.starter.jdbc.model.ModelGetterGroup;
+import com.bytehonor.sdk.starter.jdbc.result.Results;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 
 @Repository
@@ -25,19 +26,19 @@ public class UserProfileDao {
         @Override
         public UserProfile mapRow(ResultSet rs, int rowNum) throws SQLException {
             UserProfile model = new UserProfile();
-            model.setId(rs.getLong("id"));
+            model.setId(Results.longer(rs, "id"));
 
-            model.setUuid(rs.getString("uuid"));
-            model.setName(rs.getString("name"));
-            model.setAge(rs.getInt("age"));
-            model.setGender(rs.getInt("gender"));
-            model.setIncome(rs.getString("income"));
+            model.setUuid(Results.string(rs, "uuid"));
+            model.setName(Results.string(rs, "name"));
+            model.setAge(Results.integer(rs, "age"));
+            model.setGender(Results.integer(rs, "gender"));
+            model.setIncome(Results.string(rs, "income"));
 
-            model.setPhone(rs.getString("phone"));
-            model.setOccupation(rs.getString("occupation"));
+            model.setPhone(Results.string(rs, "phone"));
+            model.setOccupation(Results.string(rs, "occupation"));
 
-            model.setUpdateAt(rs.getLong("update_at"));
-            model.setCreateAt(rs.getLong("create_at"));
+            model.setUpdateAt(Results.longer(rs, "updateAt"));
+            model.setCreateAt(Results.longer(rs, "createAt"));
             return model;
         }
     };
