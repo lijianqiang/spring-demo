@@ -5,14 +5,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.bytehonor.sdk.define.spring.query.QueryCondition;
 import com.bytehonor.sdk.starter.jdbc.dao.JdbcProxyDao;
-import com.bytehonor.sdk.starter.jdbc.model.ModelConvertMapper;
-import com.bytehonor.sdk.starter.jdbc.model.ModelGetterGroup;
-import com.bytehonor.sdk.starter.jdbc.result.Results;
+import com.bytehonor.sdk.starter.jdbc.model.ModelGetter;
+import com.bytehonor.sdk.starter.jdbc.model.ModelGetterMapper;
+import com.bytehonor.sdk.starter.jdbc.model.ModelSetter;
+import com.bytehonor.sdk.starter.jdbc.model.ModelSetterMapper;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 
 @Repository
@@ -21,45 +21,45 @@ public class UserProfileDao {
     @Autowired
     private JdbcProxyDao jdbcProxyDao;
 
-    private final RowMapper<UserProfile> rowMapper = new RowMapper<UserProfile>() {
+    private final ModelSetterMapper<UserProfile> setterMapper = new ModelSetterMapper<UserProfile>() {
 
         @Override
-        public UserProfile mapRow(ResultSet rs, int rowNum) throws SQLException {
-            UserProfile model = new UserProfile();
-            model.setId(Results.longer(rs, "id"));
+        public ModelSetter<UserProfile> make(ResultSet rs) throws SQLException {
+            ModelSetter<UserProfile> setter = ModelSetter.create(UserProfile::new, rs);
 
-            model.setUuid(Results.string(rs, "uuid"));
-            model.setName(Results.string(rs, "name"));
-            model.setAge(Results.integer(rs, "age"));
-            model.setGender(Results.integer(rs, "gender"));
-            model.setIncome(Results.string(rs, "income"));
+            setter.add(UserProfile::setId);
 
-            model.setPhone(Results.string(rs, "phone"));
-            model.setOccupation(Results.string(rs, "occupation"));
+            setter.add(UserProfile::setUuid);
+            setter.add(UserProfile::setName);
+            setter.add(UserProfile::setAge);
+            setter.add(UserProfile::setGender);
+            setter.add(UserProfile::setIncome);
 
-            model.setUpdateAt(Results.longer(rs, "updateAt"));
-            model.setCreateAt(Results.longer(rs, "createAt"));
-            return model;
+            setter.add(UserProfile::setPhone);
+            setter.add(UserProfile::setOccupation);
+
+            setter.add(UserProfile::setUpdateAt);
+            setter.add(UserProfile::setCreateAt);
+
+            return setter;
         }
     };
 
-    private final ModelConvertMapper<UserProfile> convertMapper = new ModelConvertMapper<UserProfile>() {
+    private final ModelGetterMapper<UserProfile> getterMapper = new ModelGetterMapper<UserProfile>() {
 
         @Override
-        public ModelGetterGroup<UserProfile> create() {
+        public ModelGetter<UserProfile> create(UserProfile model) {
+            ModelGetter<UserProfile> getter = ModelGetter.create(model);
 
-            ModelGetterGroup<UserProfile> group = ModelGetterGroup.create(UserProfile.class);
+            getter.add(UserProfile::getUuid);
+            getter.add(UserProfile::getName);
+            getter.add(UserProfile::getAge);
+            getter.add(UserProfile::getGender);
+            getter.add(UserProfile::getIncome);
 
-            group.add("uuid", UserProfile::getUuid);
-            group.add("name", UserProfile::getName);
-            group.add("age", UserProfile::getAge);
-            group.add("gender", UserProfile::getGender);
-            group.add("income", UserProfile::getIncome);
-
-            group.add("phone", UserProfile::getPhone);
-            group.add("occupation", UserProfile::getOccupation);
-
-            return group;
+            getter.add(UserProfile::getPhone);
+            getter.add(UserProfile::getOccupation);
+            return getter;
         }
 
     };
@@ -69,17 +69,17 @@ public class UserProfileDao {
     }
 
     public UserProfile insert(UserProfile model) {
-        long id = jdbcProxyDao.insert(model, convertMapper);
+        long id = jdbcProxyDao.insert(model, getterMapper);
         model.setId(id);
         return model;
     }
 
     public UserProfile get(Long id) {
-        return jdbcProxyDao.queryById(UserProfile.class, id, rowMapper);
+        return jdbcProxyDao.queryById(UserProfile.class, id, setterMapper);
     }
 
     public int update(UserProfile model) {
-        return jdbcProxyDao.updateById(model, model.getId(), convertMapper);
+        return jdbcProxyDao.updateById(model, model.getId(), getterMapper);
     }
 
     public int count(QueryCondition condition) {
@@ -87,7 +87,7 @@ public class UserProfileDao {
     }
 
     public List<UserProfile> list(QueryCondition condition) {
-        return jdbcProxyDao.query(UserProfile.class, condition, rowMapper);
+        return jdbcProxyDao.query(UserProfile.class, condition, setterMapper);
     }
 
     public List<Integer> distinctAge(QueryCondition condition) {
