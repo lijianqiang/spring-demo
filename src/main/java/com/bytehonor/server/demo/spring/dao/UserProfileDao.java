@@ -24,7 +24,7 @@ public class UserProfileDao {
     private final ModelSetterMapper<UserProfile> setterMapper = new ModelSetterMapper<UserProfile>() {
 
         @Override
-        public ModelSetter<UserProfile> make(ResultSet rs) throws SQLException {
+        public ModelSetter<UserProfile> create(ResultSet rs) throws SQLException {
             ModelSetter<UserProfile> setter = ModelSetter.create(UserProfile::new, rs);
 
             setter.add(UserProfile::setId);
