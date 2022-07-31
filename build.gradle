@@ -25,7 +25,7 @@ ext {
 
 dependencies {
     implementation('com.bytehonor.sdk:spring-server-sdk:1.7.35')
-    implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.4.1')
+    implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.4.2')
     implementation('com.bytehonor.sdk:redis-starter-sdk:0.2.8')
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')

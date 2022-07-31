@@ -25,7 +25,7 @@ public class UserProfileDao {
 
         @Override
         public ModelSetter<UserProfile> create(ResultSet rs) throws SQLException {
-            ModelSetter<UserProfile> setter = ModelSetter.create(UserProfile::new, rs);
+            ModelSetter<UserProfile> setter = ModelSetter.of(UserProfile::new, rs);
 
             setter.add(UserProfile::setId);
 
@@ -49,7 +49,7 @@ public class UserProfileDao {
 
         @Override
         public ModelGetter<UserProfile> create(UserProfile model) {
-            ModelGetter<UserProfile> getter = ModelGetter.create(model);
+            ModelGetter<UserProfile> getter = ModelGetter.of(model);
 
             getter.add(UserProfile::getUuid);
             getter.add(UserProfile::getName);
