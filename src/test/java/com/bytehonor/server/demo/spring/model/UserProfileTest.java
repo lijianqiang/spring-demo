@@ -38,7 +38,7 @@ public class UserProfileTest {
             Class<?> clz = Class.forName(UserProfile.class.getName());
             start = System.currentTimeMillis();
             for (int i = 0; i < size; i++) {
-                profile = (UserProfile) clz.newInstance();
+                profile = (UserProfile) clz.getDeclaredConstructor().newInstance();
             }
             long costClz = System.currentTimeMillis() - start;
             LOG.info("clz cost:{}", costClz);
