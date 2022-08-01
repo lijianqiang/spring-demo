@@ -44,21 +44,34 @@ public class JdbcPerformanceTest {
     public void test() {
 
         long id = 9L;
-
         int size = 10000;
+        LOG.info("size:{}", size);
+
+        for (int i = 0; i < 10; i++) {
+            testRaw(id, size); // 1527ms
+
+            testDao(id, size); // 1772ms
+        }
+    }
+
+    private void testRaw(long id, int size) {
+        String sql = "select * from tbl_user_profile where id = ?";
+        Object[] args = new Object[] { id };
+        int[] types = new int[] { SqlValueTypes.LONG };
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < size; i++) {
+            jdbcTemplate.query(sql, args, types, MAPPER);
+        }
+        LOG.info("raw cost:{}", System.currentTimeMillis() - start);
+
+    }
+
+    private void testDao(long id, int size) {
         long start = System.currentTimeMillis();
         for (int i = 0; i < size; i++) {
             userProfileDao.get(id);
         }
         LOG.info("dao cost:{}", System.currentTimeMillis() - start);
 
-        String sql = "select * from tbl_user_profile where id = ?";
-        Object[] args = new Object[] { id };
-        int[] types = new int[] { SqlValueTypes.LONG };
-        start = System.currentTimeMillis();
-        for (int i = 0; i < size; i++) {
-            jdbcTemplate.query(sql, args, types, MAPPER);
-        }
-        LOG.info("raw cost:{}", System.currentTimeMillis() - start);
     }
 }
