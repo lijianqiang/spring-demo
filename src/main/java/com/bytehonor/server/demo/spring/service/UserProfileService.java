@@ -2,7 +2,7 @@ package com.bytehonor.server.demo.spring.service;
 
 import java.util.List;
 
-import com.bytehonor.sdk.define.spring.query.QueryCondition;
+import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 
 public interface UserProfileService {

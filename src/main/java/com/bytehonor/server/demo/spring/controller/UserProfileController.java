@@ -1,6 +1,7 @@
 package com.bytehonor.server.demo.spring.controller;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bytehonor.sdk.define.spring.query.QueryCondition;
-import com.bytehonor.sdk.define.spring.result.DataListVO;
-import com.bytehonor.sdk.lang.spring.Sdk;
+import com.bytehonor.sdk.define.spring.response.DataList;
+import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.server.spring.getter.RequestGetter;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;
@@ -32,12 +32,12 @@ public class UserProfileController {
 
     @RequestMapping(method = { RequestMethod.GET }, value = "/profile")
     @ResponseBody
-    public DataListVO<UserProfile> listUserProfile(HttpServletRequest request) {
+    public DataList<UserProfile> listUserProfile(HttpServletRequest request) {
         LOG.info("listUserProfile");
         QueryCondition condition = RequestGetter.create(request);
         List<UserProfile> list = userProfileService.list(condition);
         int total = userProfileService.count(condition);
-        DataListVO<UserProfile> result = new DataListVO<UserProfile>();
+        DataList<UserProfile> result = new DataList<UserProfile>();
         result.setList(list);
         result.setTotal(total);
         return result;
@@ -48,7 +48,7 @@ public class UserProfileController {
     public UserProfile getUserProfile(HttpServletRequest request, @PathVariable Long id) {
         LOG.info("getUserProfile id:{}", id);
         UserProfile model = userProfileService.get(id);
-        Sdk.require(model, id);
+        Objects.requireNonNull(model, "id");
 
         return model;
     }

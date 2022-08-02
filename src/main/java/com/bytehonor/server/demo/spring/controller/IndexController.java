@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bytehonor.sdk.define.spring.result.StringResultVO;
-import com.bytehonor.sdk.lang.spring.util.LocalDateTimeUtils;
+import com.bytehonor.sdk.define.spring.response.DataString;
+import com.bytehonor.sdk.lang.spring.util.TimeFormatUtils;
 import com.bytehonor.sdk.server.spring.SpringServer;
 
 @RestController
@@ -17,16 +17,16 @@ public class IndexController {
     private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping("/")
-    public StringResultVO actionIndex() {
+    public DataString actionIndex() {
         LOG.info("hello, {}", SpringServer.id());
-        return new StringResultVO("hello world");
+        return new DataString("hello world");
     }
 
     @RequestMapping("/time")
-    public StringResultVO actionTime() {
-        String format = LocalDateTimeUtils.format(LocalDateTime.now());
+    public DataString actionTime() {
+        String format = TimeFormatUtils.format(LocalDateTime.now());
         LOG.info("time:{}", format);
-        return new StringResultVO(format);
+        return new DataString(format);
     }
 
 }
