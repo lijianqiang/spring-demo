@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Service;
 
-import com.bytehonor.sdk.define.spring.constant.HttpConstants;
+import com.bytehonor.sdk.lang.spring.constant.HttpConstants;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.lang.spring.util.UuidUtils;
 import com.bytehonor.server.demo.spring.dao.UserProfileDao;
