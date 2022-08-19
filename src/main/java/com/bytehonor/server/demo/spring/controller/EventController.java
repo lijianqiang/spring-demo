@@ -33,9 +33,9 @@ public class EventController {
     @RequestMapping("/test2")
     public DataString test2() {
         LOG.info("test2");
-        for (int i = 0; i < 10; i++) {
-            EventPayload payload = EventPayload.build(new SampleEvent());
-            springEventProducer.produce(payload);
+        for (int i = 0; i < 51200; i++) {
+            EventPayload payload = EventPayload.build(new SampleEvent(i));
+            springEventProducer.produce("spring-demo-server", payload);
         }
         return DataString.ok();
     }

@@ -17,10 +17,12 @@ public class SampleEventConsumer implements EventConsumer {
 
     @Override
     public void consume(EventPayload payload) {
-        LOG.info("subject:{}, bdoy:{}", payload.getSubject(), payload.getBody());
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("subject:{}, bdoy:{}", payload.getSubject(), payload.getBody());
+        }
 
-        SampleEvent request = payload.reflect(SampleEvent.class);
-        LOG.info("time:{}", request.getTime());
+        SampleEvent event = payload.reflect(SampleEvent.class);
+        LOG.info("id:{}", event.getId());
     }
 
 }

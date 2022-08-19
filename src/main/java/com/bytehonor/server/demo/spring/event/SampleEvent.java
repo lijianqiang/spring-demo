@@ -6,18 +6,21 @@ public class SampleEvent implements Serializable {
 
     private static final long serialVersionUID = -356390135068553977L;
 
-    private long time;
+    private int id;
 
     public SampleEvent() {
-        this.time = System.currentTimeMillis();
+        this(0);
+    }
+    public SampleEvent(int id) {
+        this.id = id;
     }
 
-    public long getTime() {
-        return time;
+    public int getId() {
+        return id;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
