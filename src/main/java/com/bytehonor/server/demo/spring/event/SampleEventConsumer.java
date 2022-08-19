@@ -10,7 +10,7 @@ public class SampleEventConsumer extends AbstractEventConsumer<SampleEvent> {
     private static final Logger LOG = LoggerFactory.getLogger(SampleEventConsumer.class);
 
     public SampleEventConsumer() {
-        super();
+        super(1024);
     }
 
     @Override
@@ -19,7 +19,7 @@ public class SampleEventConsumer extends AbstractEventConsumer<SampleEvent> {
     }
 
     @Override
-    public void doProcess(SampleEvent payload) {
+    public void doConsume(SampleEvent payload) {
         LOG.info("id:{}", payload.getId());
     }
 
