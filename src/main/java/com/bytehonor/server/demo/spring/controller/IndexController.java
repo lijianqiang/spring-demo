@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bytehonor.sdk.define.spring.response.DataString;
 import com.bytehonor.sdk.lang.spring.util.TimeFormatUtils;
-import com.bytehonor.sdk.message.server.event.EventPayload;
-import com.bytehonor.sdk.message.server.producer.ServerEventProducer;
+import com.bytehonor.sdk.message.spring.payload.MessagePayload;
+import com.bytehonor.sdk.message.spring.producer.SpringMessageProducer;
 import com.bytehonor.sdk.server.spring.SpringServer;
 
 @RestController
@@ -20,7 +20,7 @@ public class IndexController {
     private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
-    private ServerEventProducer serverEventProducer;
+    private SpringMessageProducer springMessageProducer;
 
     @RequestMapping("/")
     public DataString actionIndex() {
@@ -38,8 +38,8 @@ public class IndexController {
     @RequestMapping("/test")
     public DataString actionTest() {
         LOG.info("actionTest");
-        EventPayload payload = EventPayload.build("actionTest");
-        serverEventProducer.produce(payload);
+        MessagePayload payload = MessagePayload.build("actionTest");
+        springMessageProducer.produce(payload);
         return DataString.ok();
     }
 
