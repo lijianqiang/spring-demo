@@ -3,26 +3,24 @@ package com.bytehonor.server.demo.spring.event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.bytehonor.sdk.event.spring.consumer.EventConsumer;
-import com.bytehonor.sdk.event.spring.payload.EventPayload;
+import com.bytehonor.sdk.event.spring.consumer.AbstractEventConsumer;
 
-public class SampleEventConsumer implements EventConsumer {
+public class SampleEventConsumer extends AbstractEventConsumer<SampleEvent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(SampleEventConsumer.class);
 
-    @Override
-    public String subject() {
-        return SampleEvent.class.getName();
+    public SampleEventConsumer() {
+        super();
     }
 
     @Override
-    public void consume(EventPayload payload) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("subject:{}, bdoy:{}", payload.getSubject(), payload.getBody());
-        }
+    public Class<SampleEvent> target() {
+        return SampleEvent.class;
+    }
 
-        SampleEvent event = payload.reflect(SampleEvent.class);
-        LOG.info("id:{}", event.getId());
+    @Override
+    public void doProcess(SampleEvent payload) {
+        LOG.info("id:{}", payload.getId());
     }
 
 }
