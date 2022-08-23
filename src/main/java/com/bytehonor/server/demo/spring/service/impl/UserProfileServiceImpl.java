@@ -22,9 +22,9 @@ public class UserProfileServiceImpl implements UserProfileService {
     private UserProfileDao userProfileDao;
 
     @Override
-    public boolean deleteById(Long id) {
+    public boolean delete(Long id) {
         Objects.requireNonNull(id, "id");
-        return userProfileDao.deleteById(id);
+        return userProfileDao.delete(id);
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.bytehonor.server.demo.spring.model.UserProfile;
 
 public interface UserProfileService {
 
-    public boolean deleteById(Long id);
+    public boolean delete(Long id);
 
     public UserProfile insert(UserProfile model);
 

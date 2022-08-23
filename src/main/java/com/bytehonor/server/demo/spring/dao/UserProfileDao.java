@@ -64,7 +64,7 @@ public class UserProfileDao {
 
     };
 
-    public boolean deleteById(Long id) {
+    public boolean delete(Long id) {
         return jdbcProxyDao.deleteById(UserProfile.class, id) > 0;
     }
 
