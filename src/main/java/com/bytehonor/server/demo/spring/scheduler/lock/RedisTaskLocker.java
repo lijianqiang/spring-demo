@@ -12,7 +12,7 @@ public class RedisTaskLocker extends TaskLocker {
     private final RedisCacheService redisCacheService;
 
     public RedisTaskLocker() {
-        this.redisCacheService = SpringServer.getBean(RedisCacheService.class);
+        this.redisCacheService = SpringServer.bean(RedisCacheService.class);
     }
 
     @Override
