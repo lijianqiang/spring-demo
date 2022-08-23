@@ -6,9 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ServerStartListenerTest {
+public class ServerReadyListenerTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ServerStartListenerTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ServerReadyListenerTest.class);
 
     @Test
     public void test() {

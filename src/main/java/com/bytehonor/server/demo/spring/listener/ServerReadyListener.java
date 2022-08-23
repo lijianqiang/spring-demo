@@ -7,7 +7,7 @@ import com.bytehonor.server.demo.spring.event.SpringEventStarter;
 import com.bytehonor.server.demo.spring.scheduler.SchedulerStarter;
 
 @Component
-public class ServerStartListener implements ReadyListener {
+public class ServerReadyListener implements ReadyListener {
 
     @Override
     public void onStart() {
