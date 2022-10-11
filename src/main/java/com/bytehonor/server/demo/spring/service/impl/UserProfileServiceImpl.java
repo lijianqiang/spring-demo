@@ -1,6 +1,5 @@
 package com.bytehonor.server.demo.spring.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Service;
 
-import com.bytehonor.sdk.lang.spring.constant.HttpConstants;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.lang.spring.util.UuidUtils;
 import com.bytehonor.server.demo.spring.dao.UserProfileDao;
@@ -77,30 +75,6 @@ public class UserProfileServiceImpl implements UserProfileService {
     public List<UserProfile> list(QueryCondition condition) {
         Objects.requireNonNull(condition, "condition");
         return userProfileDao.list(condition);
-    }
-
-    @Override
-    public List<UserProfile> listAll(QueryCondition condition) {
-        Objects.requireNonNull(condition, "condition");
-        int total = count(condition);
-        if (total < 1) {
-            return new ArrayList<UserProfile>();
-        }
-        List<UserProfile> result = new ArrayList<UserProfile>(total * 2);
-        List<UserProfile> part = new ArrayList<UserProfile>();
-        int start = 0;
-        int limit = HttpConstants.LIMIT_MAX_TOP;
-        while (start < total) {
-            condition.setLimit(limit);
-            condition.setOffset(start);
-            part = list(condition);
-            if (part == null || part.isEmpty()) {
-                break;
-            }
-            result.addAll(part);
-            start += limit;
-        }
-        return result;
     }
 
     @Override

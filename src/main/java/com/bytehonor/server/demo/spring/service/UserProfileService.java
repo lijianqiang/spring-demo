@@ -21,8 +21,6 @@ public interface UserProfileService {
 
     public List<UserProfile> list(QueryCondition condition);
 
-    public List<UserProfile> listAll(QueryCondition condition);
-
     public void save(UserProfile model);
 
     public List<Integer> distinctAge(QueryCondition condition);
