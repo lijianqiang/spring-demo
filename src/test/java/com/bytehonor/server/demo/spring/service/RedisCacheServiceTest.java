@@ -79,6 +79,16 @@ public class RedisCacheServiceTest {
     }
 
     @Test
+    public void testDecrement2() {
+        String key = "testDecrement2";
+        redisCacheService.delete(key);
+        long val = redisCacheService.decrement(key);
+
+        LOG.info("testDecrement2 val:{}", redisCacheService.getInteger(key));
+        Assertions.assertTrue(val == -1L, "testDecrement2");
+    }
+
+    @Test
     public void testLongSet() {
         String key = "testLongSet";
         redisCacheService.delete(key);
