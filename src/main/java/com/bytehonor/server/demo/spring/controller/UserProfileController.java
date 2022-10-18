@@ -30,7 +30,7 @@ public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
 
-    @RequestMapping(method = { RequestMethod.GET }, value = "/profile")
+    @RequestMapping(method = RequestMethod.GET, value = "/profile")
     @ResponseBody
     public DataList<UserProfile> listUserProfile(HttpServletRequest request) {
         LOG.info("listUserProfile");
@@ -67,7 +67,7 @@ public class UserProfileController {
         return userProfileService.get(id);
     }
 
-    @RequestMapping(method = { RequestMethod.POST }, value = "/profile")
+    @RequestMapping(method = RequestMethod.POST, value = "/profile")
     @ResponseBody
     public UserProfile insertUserProfile(HttpServletRequest request, @RequestBody UserProfile body) {
         LOG.info("insertUserProfile");
