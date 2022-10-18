@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bytehonor.sdk.define.spring.response.DataList;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
-import com.bytehonor.sdk.server.spring.getter.RequestGetter;
+import com.bytehonor.sdk.server.spring.getter.RequestParser;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;
 
@@ -34,7 +34,7 @@ public class UserProfileController {
     @ResponseBody
     public DataList<UserProfile> listUserProfile(HttpServletRequest request) {
         LOG.info("listUserProfile");
-        QueryCondition condition = RequestGetter.create(request);
+        QueryCondition condition = RequestParser.parse(UserProfile.class, request);
         List<UserProfile> list = userProfileService.list(condition);
         int total = userProfileService.count(condition);
         DataList<UserProfile> result = new DataList<UserProfile>();
@@ -43,7 +43,7 @@ public class UserProfileController {
         return result;
     }
 
-    @RequestMapping(method = { RequestMethod.GET }, value = "/profile/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/profile/{id}")
     @ResponseBody
     public UserProfile getUserProfile(HttpServletRequest request, @PathVariable Long id) {
         LOG.info("getUserProfile id:{}", id);
@@ -51,6 +51,20 @@ public class UserProfileController {
         Objects.requireNonNull(model, "id");
 
         return model;
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/profile/{id}")
+    @ResponseBody
+    public UserProfile updateUserProfile(HttpServletRequest request, @PathVariable Long id,
+            @RequestBody UserProfile body) {
+        LOG.info("updateUserProfile id:{}", id);
+        UserProfile exist = userProfileService.get(id);
+        Objects.requireNonNull(exist, "id");
+
+        body.setId(id);
+        userProfileService.update(body);
+
+        return userProfileService.get(id);
     }
 
     @RequestMapping(method = { RequestMethod.POST }, value = "/profile")

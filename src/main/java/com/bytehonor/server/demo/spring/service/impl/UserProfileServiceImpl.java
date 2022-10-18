@@ -52,7 +52,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     public UserProfile getByUuid(String uuid) {
         Objects.requireNonNull(uuid, "uuid");
 
-        QueryCondition condition = QueryCondition.one().eq("uuid", uuid);
+        QueryCondition condition = QueryCondition.one().eq(UserProfile::getUuid, uuid);
         List<UserProfile> result = list(condition);
         return DataAccessUtils.uniqueResult(result);
     }
