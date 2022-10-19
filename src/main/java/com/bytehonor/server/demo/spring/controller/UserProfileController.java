@@ -34,7 +34,7 @@ public class UserProfileController {
     @ResponseBody
     public DataList<UserProfile> listUserProfile(HttpServletRequest request) {
         LOG.info("listUserProfile");
-        QueryCondition condition = RequestParser.parse(UserProfile.class, request);
+        QueryCondition condition = RequestParser.and(UserProfile.class, request);
         List<UserProfile> list = userProfileService.list(condition);
         int total = userProfileService.count(condition);
         DataList<UserProfile> result = new DataList<UserProfile>();
