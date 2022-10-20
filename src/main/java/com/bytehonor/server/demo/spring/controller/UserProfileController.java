@@ -35,11 +35,13 @@ public class UserProfileController {
     public DataList<UserProfile> listUserProfile(HttpServletRequest request) {
         LOG.info("listUserProfile");
         QueryCondition condition = RequestParser.and(UserProfile.class, request);
-        List<UserProfile> list = userProfileService.list(condition);
-        int total = userProfileService.count(condition);
         DataList<UserProfile> result = new DataList<UserProfile>();
+        List<UserProfile> list = userProfileService.list(condition);
         result.setList(list);
-        result.setTotal(total);
+        if (condition.counted()) {
+            int total = userProfileService.count(condition);
+            result.setTotal(total);
+        }
         return result;
     }
 
