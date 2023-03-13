@@ -19,7 +19,7 @@ public class SampleEventConsumer extends AbstractEventConsumer<SampleEvent> {
     }
 
     @Override
-    public void doConsume(SampleEvent payload) {
+    public void process(SampleEvent payload) {
         LOG.info("id:{}", payload.getId());
     }
 
