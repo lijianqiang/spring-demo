@@ -9,10 +9,6 @@ public class SampleEventConsumer extends AbstractEventConsumer<SampleEvent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(SampleEventConsumer.class);
 
-    public SampleEventConsumer() {
-        super(1024);
-    }
-
     @Override
     public Class<SampleEvent> target() {
         return SampleEvent.class;
