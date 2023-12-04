@@ -37,7 +37,7 @@ public class UserProfileServiceTest3 {
         model.setIncome("");
         model.setGender(1);
 
-        int top = 50;
+        int top = 10;
         for (int i = 0; i < 200; i++) {
             model.setAge(i % top);
             model.setName("name" + i);
@@ -45,9 +45,8 @@ public class UserProfileServiceTest3 {
             userProfileService.insert(model);
         }
 
-        // SELECT DISTINCT(age) FROM tbl_user_profile WHERE age < ? AND age > ?
-        List<Integer> list = userProfileService
-                .distinctAge(QueryCondition.all().lt(UserProfile::getAge, top).egt(UserProfile::getAge, 0));
+        // SELECT DISTINCT(age) FROM tbl_user_profile WHERE age >= ?
+        List<Integer> list = userProfileService.distinctAge(QueryCondition.all().egt(UserProfile::getAge, 0));
         for (Integer val : list) {
             LOG.info("val:{}", val);
         }

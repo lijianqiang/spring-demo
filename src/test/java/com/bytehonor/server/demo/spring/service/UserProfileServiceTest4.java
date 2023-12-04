@@ -39,7 +39,7 @@ public class UserProfileServiceTest4 {
         model.setIncome("");
         model.setGender(1);
 
-        int top = 50;
+        int top = 20;
         for (int i = 0; i < 200; i++) {
             model.setAge(i % top);
             model.setName("name" + model.getAge());
@@ -49,8 +49,7 @@ public class UserProfileServiceTest4 {
 
         // SELECT `age` AS `value`, COUNT(id) AS `size` FROM tbl_user_profile WHERE age
         // < ? AND age >= ? GROUP BY `age`
-        List<GroupCountItem> list = userProfileService
-                .groupCount(QueryCondition.all().lt(UserProfile::getAge, top).egt(UserProfile::getAge, 0));
+        List<GroupCountItem> list = userProfileService.groupCount(QueryCondition.all().egt(UserProfile::getAge, 0));
         for (GroupCountItem item : list) {
             LOG.info("value:{}, size:{}", item.getValue(), item.getSize());
         }
