@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.lang.spring.util.UuidUtils;
 import com.bytehonor.sdk.starter.jdbc.JdbcConfig;
-import com.bytehonor.sdk.starter.jdbc.model.GroupByItem;
+import com.bytehonor.sdk.starter.jdbc.model.GroupCountItem;
 import com.bytehonor.server.demo.spring.TestWrapper;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 
@@ -47,12 +47,12 @@ public class UserProfileServiceTest4 {
             userProfileService.insert(model);
         }
 
-        // SELECT `age` AS `key`, COUNT(id) AS `value` FROM tbl_user_profile WHERE age <
-        // ? AND age >= ? GROUP BY `age`
-        List<GroupByItem> list = userProfileService
+        // SELECT `age` AS `value`, COUNT(id) AS `size` FROM tbl_user_profile WHERE age
+        // < ? AND age >= ? GROUP BY `age`
+        List<GroupCountItem> list = userProfileService
                 .groupCount(QueryCondition.all().lt(UserProfile::getAge, top).egt(UserProfile::getAge, 0));
-        for (GroupByItem item : list) {
-            LOG.info("key:{}, value:{}", item.getKey(), item.getValue());
+        for (GroupCountItem item : list) {
+            LOG.info("value:{}, size:{}", item.getValue(), item.getSize());
         }
         LOG.info("testGroupCount list:{}", list.size());
         TestWrapper.assertTrue("*testGroupCount*", list.size() == top);

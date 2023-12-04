@@ -11,7 +11,7 @@ import com.bytehonor.sdk.lang.spring.function.ClassGetter;
 import com.bytehonor.sdk.lang.spring.function.getter.GetInteger;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.starter.jdbc.dao.JdbcProxyDao;
-import com.bytehonor.sdk.starter.jdbc.model.GroupByItem;
+import com.bytehonor.sdk.starter.jdbc.model.GroupCountItem;
 import com.bytehonor.sdk.starter.jdbc.model.ModelGetter;
 import com.bytehonor.sdk.starter.jdbc.model.ModelGetterMapper;
 import com.bytehonor.sdk.starter.jdbc.model.ModelSetter;
@@ -101,7 +101,7 @@ public class UserProfileDao {
         return jdbcProxyDao.integers(UserProfile.class, getter, condition);
     }
 
-    public List<GroupByItem> groupCount(ClassGetter<UserProfile, ?> getter, QueryCondition condition) {
+    public List<GroupCountItem> groupCount(ClassGetter<UserProfile, ?> getter, QueryCondition condition) {
         return jdbcProxyDao.groupCount(UserProfile.class, getter, condition);
     }
 }
