@@ -62,7 +62,7 @@ public class UserProfileServiceTest {
 
     @Test
     public void testDistinct() {
-        List<Integer> list = userProfileService.distinctAge(QueryCondition.and());
+        List<Integer> list = userProfileService.distinctAge(QueryCondition.all());
         TestWrapper.assertTrue("*testDistinct*", list.size() > 0);
     }
 }

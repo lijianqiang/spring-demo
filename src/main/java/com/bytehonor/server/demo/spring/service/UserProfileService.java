@@ -3,6 +3,7 @@ package com.bytehonor.server.demo.spring.service;
 import java.util.List;
 
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
+import com.bytehonor.sdk.starter.jdbc.model.GroupByItem;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 
 public interface UserProfileService {
@@ -24,5 +25,9 @@ public interface UserProfileService {
     public void save(UserProfile model);
 
     public List<Integer> distinctAge(QueryCondition condition);
+
+    public List<GroupByItem> groupCount(QueryCondition condition);
+
+    public int delete(QueryCondition condition);
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.lang.spring.util.UuidUtils;
+import com.bytehonor.sdk.starter.jdbc.model.GroupByItem;
 import com.bytehonor.server.demo.spring.dao.UserProfileDao;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;
@@ -22,7 +23,13 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public boolean delete(Long id) {
         Objects.requireNonNull(id, "id");
-        return userProfileDao.delete(id);
+        return userProfileDao.deleteById(id);
+    }
+
+    @Override
+    public int delete(QueryCondition condition) {
+        Objects.requireNonNull(condition, "condition");
+        return userProfileDao.delete(condition);
     }
 
     @Override
@@ -91,7 +98,12 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public List<Integer> distinctAge(QueryCondition condition) {
-        return userProfileDao.distinctAge(condition);
+        return userProfileDao.integers(UserProfile::getAge, condition);
+    }
+
+    @Override
+    public List<GroupByItem> groupCount(QueryCondition condition) {
+        return userProfileDao.groupCount(UserProfile::getName, condition);
     }
 
 }

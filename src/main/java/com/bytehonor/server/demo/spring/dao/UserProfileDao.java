@@ -7,8 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bytehonor.sdk.lang.spring.function.ClassGetter;
+import com.bytehonor.sdk.lang.spring.function.getter.GetInteger;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.starter.jdbc.dao.JdbcProxyDao;
+import com.bytehonor.sdk.starter.jdbc.model.GroupByItem;
 import com.bytehonor.sdk.starter.jdbc.model.ModelGetter;
 import com.bytehonor.sdk.starter.jdbc.model.ModelGetterMapper;
 import com.bytehonor.sdk.starter.jdbc.model.ModelSetter;
@@ -64,8 +67,12 @@ public class UserProfileDao {
 
     };
 
-    public boolean delete(Long id) {
+    public boolean deleteById(Long id) {
         return jdbcProxyDao.deleteById(UserProfile.class, id) > 0;
+    }
+
+    public int delete(QueryCondition condition) {
+        return jdbcProxyDao.delete(UserProfile.class, condition);
     }
 
     public UserProfile insert(UserProfile model) {
@@ -90,8 +97,11 @@ public class UserProfileDao {
         return jdbcProxyDao.query(UserProfile.class, condition, setterMapper);
     }
 
-    public List<Integer> distinctAge(QueryCondition condition) {
-        return jdbcProxyDao.integers(UserProfile.class, "age", condition);
+    public List<Integer> integers(GetInteger<UserProfile> getter, QueryCondition condition) {
+        return jdbcProxyDao.integers(UserProfile.class, getter, condition);
     }
 
+    public List<GroupByItem> groupCount(ClassGetter<UserProfile, ?> getter, QueryCondition condition) {
+        return jdbcProxyDao.groupCount(UserProfile.class, getter, condition);
+    }
 }
