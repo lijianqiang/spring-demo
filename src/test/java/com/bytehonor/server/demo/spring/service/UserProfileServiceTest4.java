@@ -47,7 +47,8 @@ public class UserProfileServiceTest4 {
             userProfileService.insert(model);
         }
 
-        // SELECT `name` AS `value`, COUNT(id) AS `size` FROM tbl_user_profile WHERE age >= ? GROUP BY `name` ORDER BY `size` ASC
+        // SELECT `name` AS `value`, COUNT(id) AS `size` FROM tbl_user_profile WHERE age
+        // >= ? GROUP BY `name` ORDER BY `size` ASC
         List<GroupCountItem> list = userProfileService
                 .groupCount(QueryCondition.all().egt(UserProfile::getAge, 0).asc(GroupCountItem::getSize));
         for (GroupCountItem item : list) {
