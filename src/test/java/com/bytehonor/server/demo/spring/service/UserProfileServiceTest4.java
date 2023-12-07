@@ -40,16 +40,16 @@ public class UserProfileServiceTest4 {
         model.setGender(1);
 
         int top = 20;
-        for (int i = 0; i < 200; i++) {
+        for (int i = 0; i < 195; i++) {
             model.setAge(i % top);
             model.setName("name" + model.getAge());
             model.setUuid(UuidUtils.getSimple());
             userProfileService.insert(model);
         }
 
-        // SELECT `age` AS `value`, COUNT(id) AS `size` FROM tbl_user_profile WHERE age
-        // < ? AND age >= ? GROUP BY `age`
-        List<GroupCountItem> list = userProfileService.groupCount(QueryCondition.all().egt(UserProfile::getAge, 0));
+        // SELECT `name` AS `value`, COUNT(id) AS `size` FROM tbl_user_profile WHERE age >= ? GROUP BY `name` ORDER BY `size` ASC
+        List<GroupCountItem> list = userProfileService
+                .groupCount(QueryCondition.all().egt(UserProfile::getAge, 0).asc(GroupCountItem::getSize));
         for (GroupCountItem item : list) {
             LOG.info("value:{}, size:{}", item.getValue(), item.getSize());
         }
