@@ -5,8 +5,11 @@ plugins {
 }
 
 group = 'com.bytehonor.server'
-version = '0.2.2'
-sourceCompatibility = '1.8'
+version = '0.2.3'
+
+java {
+    sourceCompatibility = '1.8'
+}
 
 configurations {
     compileOnly {
@@ -24,10 +27,10 @@ ext {
 }
 
 dependencies {
-    implementation('com.bytehonor.sdk:spring-server-sdk:1.8.56')
-    implementation('com.bytehonor.sdk:spring-event-sdk:0.1.30')
-    implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.5.40')
-    implementation('com.bytehonor.sdk:redis-starter-sdk:0.3.19')
+    implementation('com.bytehonor.sdk:spring-server-sdk:1.8.60')
+    implementation('com.bytehonor.sdk:spring-event-sdk:0.1.32')
+    implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.5.44')
+    implementation('com.bytehonor.sdk:redis-starter-sdk:0.3.21')
     implementation('org.springframework.boot:spring-boot-starter-web')
     annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
     runtimeOnly('com.mysql:mysql-connector-j')
