@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bytehonor.sdk.define.spring.response.DataList;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
+import com.bytehonor.sdk.server.spring.annotation.ResponseWrap;
 import com.bytehonor.sdk.server.spring.web.request.RequestParser;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;
@@ -30,7 +31,8 @@ public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/profile")
+    @ResponseWrap
+    @RequestMapping(method = RequestMethod.GET, value = "/profiles")
     @ResponseBody
     public DataList<UserProfile> listUserProfile(HttpServletRequest request) {
         LOG.info("listUserProfile");

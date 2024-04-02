@@ -3,9 +3,9 @@ package com.bytehonor.server.demo.spring;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.bytehonor.sdk.server.spring.annotation.SpringBootStandard;
+import com.bytehonor.sdk.server.spring.annotation.ServerBeautify;
 
-@SpringBootStandard
+@ServerBeautify
 @SpringBootApplication
 public class SpringDemoServerApplication {
 
