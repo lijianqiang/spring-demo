@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bytehonor.sdk.base.spring.response.DataString;
 import com.bytehonor.sdk.event.spring.payload.EventPayload;
 import com.bytehonor.sdk.event.spring.producer.SpringEventProducer;
-import com.bytehonor.sdk.server.spring.web.model.DataString;
 import com.bytehonor.server.demo.spring.event.SampleEvent;
 
 @RestController

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bytehonor.sdk.base.spring.response.DataList;
 import com.bytehonor.sdk.lang.spring.query.QueryCondition;
 import com.bytehonor.sdk.server.spring.annotation.ResponseWrap;
-import com.bytehonor.sdk.server.spring.web.model.DataList;
 import com.bytehonor.sdk.server.spring.web.request.RequestParser;
 import com.bytehonor.server.demo.spring.model.UserProfile;
 import com.bytehonor.server.demo.spring.service.UserProfileService;

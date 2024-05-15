@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bytehonor.sdk.base.spring.response.DataString;
 import com.bytehonor.sdk.lang.spring.util.TimeFormatUtils;
 import com.bytehonor.sdk.server.spring.SpringServer;
-import com.bytehonor.sdk.server.spring.web.model.DataString;
 
 @RestController
 public class IndexController {
