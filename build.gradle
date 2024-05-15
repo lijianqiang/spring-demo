@@ -32,6 +32,7 @@ dependencies {
     implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.6.3')
     implementation('com.bytehonor.sdk:redis-starter-sdk:0.4.3')
     implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.cloud:spring-cloud-starter-consul-discovery')
     annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
     runtimeOnly('com.mysql:mysql-connector-j')
     developmentOnly('org.springframework.boot:spring-boot-devtools')
