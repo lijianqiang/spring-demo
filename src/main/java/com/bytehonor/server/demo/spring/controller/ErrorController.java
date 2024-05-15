@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bytehonor.sdk.base.spring.response.DataString;
-import com.bytehonor.sdk.lang.spring.core.Randomizer;
 
 @RestController
 @RequestMapping("/error")
@@ -18,10 +17,11 @@ public class ErrorController {
     @GetMapping("/test")
     public DataString test() {
         LOG.info("test");
-        int rand = Randomizer.integer(1, 9);
-        if (rand % 2 == 0) {
-            throw new RuntimeException("error");
-        }
+        error();
         return DataString.ok();
+    }
+
+    public static void error() {
+        throw new RuntimeException("throw_error");
     }
 }
