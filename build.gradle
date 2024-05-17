@@ -8,7 +8,7 @@ group = 'com.bytehonor.server'
 version = '0.3.0'
 
 java {
-    sourceCompatibility = '17'
+    sourceCompatibility = 17
 }
 
 configurations {
