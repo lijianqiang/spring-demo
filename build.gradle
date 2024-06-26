@@ -27,7 +27,7 @@ ext {
 }
 
 dependencies {
-    implementation('com.bytehonor.sdk:spring-server-sdk:2.0.19')
+    implementation('com.bytehonor.sdk:spring-server-sdk:2.0.23')
     implementation('com.bytehonor.sdk:spring-event-sdk:0.2.2')
     implementation('com.bytehonor.sdk:jdbc-starter-sdk:0.6.4')
     implementation('com.bytehonor.sdk:redis-starter-sdk:0.4.4')
