@@ -24,7 +24,7 @@
             <fileNamePattern>${LOG_PATH}/file/${LOG_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 除按日志记录之外，还配置了日志文件不能超过5M，若超过5M，日志文件会以索引0开始，
             命名日志文件，例如log-error-2013-12-21.0.log -->
-            <maxFileSize>10MB</maxFileSize>
+            <maxFileSize>5MB</maxFileSize>
         </rollingPolicy>
         <!-- 追加方式记录日志 -->
         <append>true</append>
