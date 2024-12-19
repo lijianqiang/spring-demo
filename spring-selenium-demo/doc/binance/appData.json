@@ -1,0 +1,282 @@
+	{
+		"dynamicIds": [
+			"XaLc",
+			"3luZ",
+			"Lp65",
+			"eeEA",
+			"Y4uf",
+			"D4P9",
+			"qtT+",
+			"M5j3",
+			"B81M",
+			"fBOh",
+			"6/Vm",
+			"JyOY",
+			"p3ZQ"
+		],
+		"ssr": true,
+		"appState": {
+			"error": {
+				"error": null
+			},
+			"loader": {
+				"dataByRouteId": {
+					"e084": {},
+					"ccf9": {
+						"faqCatalogs": [],
+						"topQuestions": [],
+						"latestArticles": [
+							{
+								"id": 221173,
+								"code": "7989c45df6b340b5aee5b95b412c43e8",
+								"title": "币安矿池圣诞特别活动：推荐好友或提升BTC算力，即可瓜分 10,000 USDT！",
+								"imageLink": null,
+								"shortLink": null,
+								"body": null,
+								"type": 1,
+								"catalogId": 93,
+								"catalogName": "币安最新活动",
+								"publishDate": 1734573648799,
+								"footer": null
+							},
+							{
+								"id": 221162,
+								"code": "3e3e422099434bcfaf39eace9c9cd666",
+								"title": "币安广场任务中心圣诞福利：完成每日任务，解锁5,000 USDC奖池并赚取币安积分！",
+								"imageLink": null,
+								"shortLink": null,
+								"body": null,
+								"type": 1,
+								"catalogId": 93,
+								"catalogName": "币安最新活动",
+								"publishDate": 1734566400000,
+								"footer": null
+							},
+							{
+								"id": 221134,
+								"code": "50d01dd7a8e041c8959b93626e0bf819",
+								"title": "IOST保本赚币：申购享20%阶梯年化收益率，及最高赢得20,000 IOST奖励！",
+								"imageLink": null,
+								"shortLink": null,
+								"body": null,
+								"type": 1,
+								"catalogId": 93,
+								"catalogName": "币安最新活动",
+								"publishDate": 1734526817278,
+								"footer": null
+							},
+							{
+								"id": 221070,
+								"code": "c5454fe49a4343eb9a49b0e0350ce085",
+								"title": "币安理财、一键买币、闪兑、杠杆、合约上线Usual（USUAL）",
+								"imageLink": null,
+								"shortLink": null,
+								"body": null,
+								"type": 1,
+								"catalogId": 48,
+								"catalogName": "数字货币及交易对上新",
+								"publishDate": 1734517810230,
+								"footer": null
+							},
+							{
+								"id": 221080,
+								"code": "c6420ba80fe54282970e1d69cafa56a4",
+								"title": "币安合约将上线LUMIAUSDT 1-75倍 USDT永续合约",
+								"imageLink": null,
+								"shortLink": null,
+								"body": null,
+								"type": 1,
+								"catalogId": 48,
+								"catalogName": "数字货币及交易对上新",
+								"publishDate": 1734514156824,
+								"footer": null
+							}
+						]
+					}
+				}
+			}
+		},
+		"pageData": {
+			"shuviInitialState": {},
+			"redux": {
+				"cmsUI": {
+					"activePath": ""
+				},
+				"cookies": {
+					"theme": "light",
+					"userPreferredCurrency": "USD_USD"
+				},
+				"global": {
+					"origin": "",
+					"url": "https://www.binance.com/zh-CN/support/announcement",
+					"path": "",
+					"host": "",
+					"dir": "ltr",
+					"metaData": {
+						"metaTitle": "support-announcement-titleKey",
+						"metaKeyword": "币安",
+						"metaDescription": "support-announcement-descriptionKey",
+						"ogImage": "https://public.bnbstatic.com/static/images/cms/announcement-og-2.png",
+						"suffix": "币安",
+						"brand": "Binance"
+					},
+					"region": "",
+					"isHybrid": false,
+					"withChat": true,
+					"withHeader": true,
+					"withFooter": true,
+					"withCompliance": true,
+					"restrictedBusinessKeys": [],
+					"noticeInfo": null,
+					"pageLayout": 1248
+				},
+				"mpUser": {
+					"firstLoad": true,
+					"isLoading": true,
+					"isLoggedIn": false
+				},
+				"persistSetting": {
+					"favorites": [],
+					"isHideSmallBalance": false,
+					"maskedBalance": false
+				},
+				"products": {
+					"loading": true,
+					"productMap": {},
+					"hotProduct": [],
+					"updateTime": 1734574945793
+				},
+				"ssrStore": {},
+				"userCenter": {
+					"userInfo": {},
+					"pmAccountInfo": {},
+					"languageMap": {},
+					"fiatCurrencyInfo": [],
+					"userPreferredCurrency": {},
+					"fiatCurrency": {
+						"USD": {
+							"pair": "USD_USD",
+							"rate": 1,
+							"symbol": "$"
+						}
+					},
+					"loginStatus": {
+						"isLoading": true
+					},
+					"userContract": {
+						"assetDetails": []
+					},
+					"userQuoteAsset": "BTC",
+					"userBncLocation": "BINANCE"
+				}
+			},
+			"i18nResource": {
+				"zh-CN": {
+					"support-center": {},
+					"binance-chat": {}
+				}
+			},
+			"i18nNamespaces": [
+				"support-center",
+				"binance-chat"
+			],
+			"ssrData": {
+				"lang": "zh-CN",
+				"pathPrefix": "/zh-CN",
+				"level2Domain": "binance.com",
+				"isRegionMode": false
+			},
+			"_uikit": {
+				"theme": "dark"
+			}
+		},
+		"basename": "/zh-CN",
+		"runtimeConfig": {
+			"SITE_HOST": "https://www.binance.com",
+			"API_HOST": "https://www.binance.com",
+			"I18N_BASE_PRIVATE": "http://bin.bnbstatic.com.s3.ap-northeast-1.amazonaws.com/api/i18n/-/web/cms",
+			"I18N_BASE_PUBLIC": "https://bin.bnbstatic.com/api/i18n/-/web/cms",
+			"STATIC_HOST": "https://bin.bnbstatic.com",
+			"STATIC_HOST_PRIVATE": "http://bin.bnbstatic.com.s3.ap-northeast-1.amazonaws.com",
+			"STATIC_HOST_PUBLIC": "https://bin.bnbstatic.com",
+			"STATIC_HOST_SHARE": "https://public.bnbstatic.com",
+			"SENTRY_DSN": "https://bc7b4aa7b676d0e66992b3013f95e1b7@o529943.ingest.us.sentry.io/4507770388414464",
+			"SENTRY_ENV": "prod",
+			"COMMIT_HEAD": "ef71b634707b29d8c7eae32f28ebe438ff7da6e8",
+			"SENSORS_SERVER_HOST": "https://api.saasexch.com/bapi/fe/usd/sa?project=binance"
+		},
+		"filesByRoutId": {
+			"3865": [
+				"static/chunks/page-3865.0b63381a.js"
+			],
+			"5649": [
+				"static/chunks/page-5649.1571bb19.js"
+			],
+			"e084": [
+				"static/css/d6ffebcb.chunk.css",
+				"static/chunks/layout-e084.3727bc2e.js"
+			],
+			"6c09": [
+				"static/chunks/page-6c09.39f30d8b.js"
+			],
+			"be57": [
+				"static/chunks/page-be57.2d9a53d7.js"
+			],
+			"f621": [
+				"static/chunks/page-f621.db126dde.js"
+			],
+			"e5ee": [
+				"static/chunks/page-e5ee.cef38da7.js"
+			],
+			"a6c5": [
+				"static/chunks/page-a6c5.ee502f07.js"
+			],
+			"672d": [
+				"static/chunks/page-672d.96dbca03.js"
+			],
+			"ad33": [
+				"static/css/49429c8f.chunk.css",
+				"static/chunks/page-ad33.1984f9c6.js"
+			],
+			"ad1e": [
+				"static/chunks/page-ad1e.297e0141.js"
+			],
+			"6b4e": [
+				"static/chunks/page-6b4e.aa0a9493.js"
+			],
+			"7d8d": [
+				"static/css/1e7f4f4c.chunk.css",
+				"static/chunks/page-7d8d.54087226.js"
+			],
+			"9e5c": [
+				"static/chunks/page-9e5c.cabc53f0.js"
+			],
+			"26aa": [
+				"static/chunks/page-26aa.226258b9.js"
+			],
+			"daeb": [
+				"static/chunks/page-daeb.45d12343.js"
+			],
+			"55c6": [
+				"static/chunks/page-55c6.26ff1731.js"
+			],
+			"456a": [
+				"static/chunks/page-456a.f4980f31.js"
+			],
+			"0df4": [
+				"static/chunks/page-0df4.d75626cc.js"
+			],
+			"cd8e": [
+				"static/css/49429c8f.chunk.css",
+				"static/chunks/page-cd8e.fb24e1e4.js"
+			],
+			"d34e": [
+				"static/css/1e7f4f4c.chunk.css",
+				"static/chunks/page-d34e.2ebb0cfd.js"
+			],
+			"ccf9": [
+				"static/chunks/page-ccf9.8a66e0e1.js"
+			]
+		},
+		"publicPath": "https://bin.bnbstatic.com/"
+	}
