@@ -15,14 +15,15 @@ public class BinanceDemo {
     public static void main(String[] args) {
         WebDriver driver = ChromeBrowser.driver("https://www.binance.com/zh-CN/support/announcement");
         Sleep.millis(500L);
+        LOG.info("before refresh html:{}", driver.getPageSource()); // 已经完成，有目标内容
+
         driver.navigate().refresh();
         Sleep.millis(500L);
         BinancePageParser parser = new BinancePageParser();
 
 //        WebElement element = driver.findElement(By.id("__APP_DATA"));
 //        LOG.info("tag:{}, text:{}, html:{}", element.getTagName(), element.getText(), element.getAttribute("innerHTML"));
-        
-        
+
         long start = System.currentTimeMillis();
         for (int i = 0; i < 100; i++) {
             parser.parse(driver);
