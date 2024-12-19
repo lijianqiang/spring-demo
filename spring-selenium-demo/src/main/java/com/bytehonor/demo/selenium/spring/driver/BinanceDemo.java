@@ -17,7 +17,7 @@ public class BinanceDemo {
         Sleep.millis(500L);
         LOG.info("before refresh html:{}", driver.getPageSource()); // 已经完成，有目标内容
 
-        driver.navigate().refresh();
+//        driver.navigate().refresh();
         Sleep.millis(500L);
         BinancePageParser parser = new BinancePageParser();
 

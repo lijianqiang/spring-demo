@@ -22,13 +22,14 @@ public class BinancePageParser implements PageParser {
 //        String html = driver.getPageSource(); // 100次 7958ms
 //        List<BinanceAnnounceItem> items = BinanceAnnounceParser.html(html, BinanceCrawlerLang.ZH_CN);
 
-        WebElement element = driver.findElement(By.id("__APP_DATA")); // 100次 2779ms
+        // By.id("__APP_DATA")
+        WebElement element = driver.findElement(By.cssSelector("script#__APP_DATA")); // 100次 2779ms
         String json = element.getAttribute("innerHTML"); // script不能用element.getText();
         List<BinanceAnnounceItem> items = BinanceAnnounceParser.appData(json, BinanceCrawlerLang.ZH_CN);
         for (BinanceAnnounceItem item : items) {
             BinanceAnnouncePrinter.item(item);
         }
-        
+
         LOG.info("size:{}", items.size());
     }
 }
