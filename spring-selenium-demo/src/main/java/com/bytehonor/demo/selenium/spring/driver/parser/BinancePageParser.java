@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import com.bytehonor.sdk.crawler.binance.constant.BinanceCrawlerLang;
 import com.bytehonor.sdk.crawler.binance.model.BinanceAnnounceItem;
 import com.bytehonor.sdk.crawler.binance.parser.BinanceAnnounceParser;
-import com.bytehonor.sdk.lang.spring.util.TimeFormatUtils;
+import com.bytehonor.sdk.crawler.binance.util.BinanceAnnouncePrinter;
 
 public class BinancePageParser implements PageParser {
 
@@ -26,13 +26,9 @@ public class BinancePageParser implements PageParser {
         String json = element.getAttribute("innerHTML"); // element.getText();
         List<BinanceAnnounceItem> items = BinanceAnnounceParser.appData(json, BinanceCrawlerLang.ZH_CN);
         for (BinanceAnnounceItem item : items) {
-            item(item);
+            BinanceAnnouncePrinter.item(item);
         }
-    }
-
-    public static void item(BinanceAnnounceItem item) {
-        LOG.info("time:{}, lang:{}, {}, category:{}/{}, code:{}, url:{}", TimeFormatUtils.format(item.getPublishAt()),
-                item.getLang(), item.getTitle(), item.getCategoryId(), item.getCategoryName(), item.getCode(),
-                item.getUrl());
+        
+        LOG.info("size:{}", items.size());
     }
 }

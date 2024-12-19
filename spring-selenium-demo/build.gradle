@@ -29,7 +29,7 @@ ext {
 dependencies {
     implementation('com.bytehonor.sdk:spring-server-sdk:2.0.54')
     implementation('org.seleniumhq.selenium:selenium-java:4.27.0')
-    implementation('com.bytehonor.sdk:binance-crawler-sdk:0.5.13')
+    implementation('com.bytehonor.sdk:binance-crawler-sdk:0.5.14')
     implementation('org.springframework.boot:spring-boot-starter-web')
     developmentOnly('org.springframework.boot:spring-boot-devtools')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
